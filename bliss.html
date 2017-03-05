@@ -1,0 +1,87 @@
+<html>
+
+<head>
+  <!-- ANIMATE.CSS y JQUERY -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+
+  <!-- ELIMINAMOS LOS BULLETS Y OCULTAMOS TODOS LOS ELEMENTOS LI MENOS EL PRIMERO -->
+  <style>
+    /* Eliminamos los bullets */
+    #switch ul { list-style: none; padding: 0; }
+
+    /* Ocultamos todos los elementos excepto el primero */
+    #switch ul li:not(:first-child) { display: none; }
+
+    /* Enlaces en color negro, con resaltado en rojo */
+    #switch ul li a { text-decoration: none; color: black; }
+    #switch ul li a strong { color: tomato; }
+  </style>
+</head>
+ text-transform: uppercase;
+<body>
+  <div id="switch">
+    <ul>
+      <li>
+        <a href="http://www.domain.com/" title="Envío gratis mundial" rel="nofollow">
+          Envío <strong>gratuito</strong> a partir de US$50
+        </a>
+      </li>
+      <li>
+        <a href="http://www.domain.com/">
+          <strong>Exentas</strong> de impuestos y derechos de aduana
+        </a>
+      </li>
+      <li>
+        <a href="http://www.domain.com/" rel="nofollow">
+          <strong>3€ dto</strong> tu primer pedido
+        </a>
+      </li>
+      <li>
+        <a href="http://www.domain.com/" title="Envío gratis mundial" rel="nofollow">
+          Envío express <strong>gratuito</strong> en los pedidos de US$129+
+        </a>
+      </li>
+      <li>
+        <a href="http://www.domain.com/" title="Envío gratis mundial" rel="nofollow">
+          Envío <strong>gratuito</strong> a partir de US$50
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <script type="text/javascript">
+    var index = 0;
+    var stop = false;
+    var num = $('#switch ul li').size();
+
+    // PARAMETROS DE CONFIGURACIÓN (intervalo y animación)
+    var interval = 1000;
+    var animationClasses = 'animated flipInX';
+
+    setInterval(
+      function() {
+        // NO HACER NADA SI ESTÁ DESHABILITADO
+        if (stop) return false;
+
+        // OCULTAR TODOS LOS ELEMENTOS Y QUITAR LAS CLASES DE ANIMACIÓN
+        $('#switch ul li').hide().removeClass(animationClasses);
+
+        // MOSTRAR EL ELEMENTO ACTUAL Y AÑADIR ANIMACIÓN
+        $('#switch ul li').eq(index).show().addClass(animationClasses);
+
+        // INCREMENTAR ÍNDICE Y REINICIARLO A CERO SI LLEGA AL ÚLTIMO
+        index = index >= num - 1 ? 0 : index + 1;
+      },
+      interval
+    );
+
+    // DESHABILITAR EL EFECTO
+    $('#switch').mouseenter(function(){ stop = true;  });
+
+    // HABILITAR EL EFECTO
+    $('#switch').mouseleave(function(){ stop = false; });
+  </script>
+
+</body>
+</html>
