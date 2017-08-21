@@ -1,1 +1,372 @@
-hola
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Saira+Semi+Condensed" rel="stylesheet">
+    <title>Demo</title>
+
+    <style>
+        body {
+            font-family: 'Saira Semi Condensed', sans-serif;
+            font-size: 36px;
+            background-color: #222;
+        }
+
+        .header-block {
+            display: flex;
+            height: 100%;
+            align-items: center;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .flex-start {
+            justify-content: flex-start;
+        }
+
+        .flex-end {
+            justify-content: flex-end;
+        }
+
+        @keyframes opacity {
+        50% { opacity: 0; }
+        }
+
+        .blink {
+            animation-name: opacity;
+            animation-duration: 1s;
+            transition-timing-function: ease;
+            animation-iteration-count: infinite;
+        }
+
+        #alert {
+            display: none;
+            border-radius: 20px;
+            position: absolute;
+            flex-direction: column;
+            font-size: 1.2em;
+            justify-content: center;
+            padding: 20px 30px;
+            top: 150px;
+            left: 15%;
+            width: 70%;
+            background-color: #fee;
+            z-index: 2000;
+            color: #422;
+        }
+
+        #alert-title {
+            font-weight: bold;
+            color: #722;
+        }
+
+        #stop {
+            display: none;
+            border-radius: 20px;
+            position: absolute;
+            flex-direction: column;
+            font-size: 1.2em;
+            justify-content: center;
+            padding: 20px 30px;
+            top: 250px;
+            left: 30%;
+            width: 40%;
+            background-color: #eee;
+            z-index: 2000;
+            color: #222;
+            -webkit-box-shadow: 10px 10px 40px -8px rgba(0,0,0,0.75);
+            -moz-box-shadow: 10px 10px 40px -8px rgba(0,0,0,0.75);
+            box-shadow: 10px 10px 40px -8px rgba(0,0,0,0.75);
+        }
+
+        #stop-title {
+            font-weight: bold;
+        }
+
+        #content {
+            background-color: #000;
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+
+        .darken {
+            filter: brightness(15%);
+        }
+
+        #header {
+            display: flex;
+            justify-content: space-between;
+            background-color: #222;
+            color: #fff;
+            position: absolute;
+            top: 0;
+            height: 80px;
+            width: 100%;
+            z-index: 100;
+            border-bottom-left-radius: 80px;
+            border-bottom-right-radius: 80px;
+        }
+
+        #logo {
+            margin-left: 60px;
+        }
+
+        #logo img {
+            width: 60px;
+            height: 60px;
+        }
+
+        #weather-icon {
+            line-height: 0px;
+        }
+
+        #weather-icon img {
+            padding-top: 5px;
+            width: 50px;
+            height: 50px;
+        }
+
+        #weather-temp {
+            font-size: 36px;
+        }
+
+        #weather-city {
+            margin-left: 30px;
+        }
+
+        #time {
+            margin-right: 60px;
+        }
+
+        #time-date {
+            margin-right: 20px;
+        }
+
+        #advert {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+        }
+
+        #advert img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        #footer {
+            display: flex;
+            justify-content: space-between;
+            color: #fff;
+            position: absolute;
+            bottom: 0;
+            height: 100px;
+            width: 100%;
+            z-index: 100;
+        }
+
+        #footer .stop {
+            display: flex;
+            flex-direction: column;
+            padding: 0 20px;
+            width: 20%;
+            background-color: #222;
+            justify-content: center;
+        }
+
+        #footer .stop.left {
+            border-top-right-radius: 80px;
+            align-items: flex-start;
+        }
+
+        #footer .stop.right {
+            border-top-left-radius: 80px;
+            align-items: flex-end;
+        }
+
+        #footer .stop-type {
+            padding-top: 10px;
+            font-size: .6em;
+            text-transform: uppercase;
+        }
+    </style>
+
+</head>
+<body>
+    <div id="stop">
+        <div id="stop-title">Parada actual</div>
+        <div id="stop-name">Plaza de España</div>
+    </div>
+    <div id="alert">
+        <div id="alert-title">Alerta meteorológica</div>
+        <div id="alert-text">
+            El Cabildo de Tenerife activa su Plan de Emergencias - Las zonas de acampada,
+            recreo y albergues estarán cerradas - Se ha aplazado el concurso de comparsas
+            infantiles que iba a celebrarse el sábado en el Recinto Ferial
+        </div>
+    </div>
+    <div id="content">
+        <div id="header">
+            <div class="header-block flex-start" id="logo">
+                <img src="images/logo.png"/>
+            </div>
+            <div class="header-block" id="weather">
+                <div id="weather-temp">19º</div>
+                <div id="weather-icon">
+                    <img src="images/weather/2.png"/>
+                </div>
+                <div id="weather-city">Santa Cruz de Tenerife</div>
+
+            </div>
+            <div class="header-block flex-end" id="time">
+                <div id="time-date">15 AGO</div>
+                <div id="time-time">
+                    <span id="time-hour">15</span>
+                    <span class="blink">:</span>
+                    <span id="time-minute">00</span>
+                </div>
+            </div>
+        </div>
+        <div id="advert">
+            <img src="images/ads/0.jpg"/>
+        </div>
+        <div id="footer">
+            <div class="stop left">
+                <div class="stop-type">Anterior parada</div>
+                <div id="stop-left-name">Tacoronte</div>
+            </div>
+            <div class="stop right">
+                <div class="stop-type">Próxima parada</div>
+                <div id="stop-right-name">Hospital Universitario</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/locale/es.js"></script>
+    <script>
+        var stopIndex = 0;
+        var advertIndex = 0;
+
+        var timeInterval;
+        var stopInterval;
+        var advertInterval;
+
+        var step = 0;
+
+        var stops = [
+            'Hospital Universitario',
+            'Conservatorio',
+            'Plaza de España',
+            'Barrio de Salamanca',
+            'Paseo Ramón Gómez',
+            'Intercambiador'
+        ];
+
+        updateTime = function() {
+            var d = new Date();
+            $('#time-hour').text(('0' + d.getHours()).substr(-2));
+            $('#time-minute').text(('0' + d.getMinutes()).substr(-2));
+            $('#time-date').html(moment().add(+1, 'days').format('D <b>MMM<b>').toUpperCase().replace('.', ''));
+        }
+
+        hideStopBottom = function() {
+            $('#footer').addClass('animated slideOutDown');
+        }
+
+        updateStopBottom = function() {
+            $('#stop-left-name').text(stops[stopIndex++]);
+            $('#stop-right-name').text(stops[stopIndex]);
+            $('#footer').removeClass('slideOutDown');
+            $('#footer').addClass('animated slideInUp');
+        }
+
+        showStopBanner = function() {
+            $('#stop-name').text(stops[stopIndex]);
+            $('#content').addClass('darken');
+            $('#stop').fadeIn();
+        }
+
+        hideStopBanner = function() {
+            $('#content').removeClass('darken');
+            $('#stop').fadeOut();
+        }
+
+        showAlertBanner = function() {
+            $('#content').addClass('darken');
+            $('#alert').fadeIn();
+        }
+
+        hideAlertBanner = function() {
+            $('#content').removeClass('darken');
+            $('#alert').fadeOut();
+        }
+
+        updateAdvert = function () {
+            advertIndex = (advertIndex + 1) % 10;
+            $('#advert img').fadeOut(300, function(){
+                $(this).attr('src', 'images/ads/' + advertIndex + '.jpg').bind('onreadystatechange load', function(){
+                    if (this.complete) $(this).fadeIn(300);
+                });
+            });
+        }
+
+        updateWeather = function(temp, imageIndex) {
+            $('#weather-temp').text(temp + 'º');
+            $('#weather-icon img').attr('src', 'images/weather/' + imageIndex + '.png');
+        }
+
+        arriveStop = function () {
+            showStopBanner();
+            hideStopBottom();
+        }
+
+        departureStop = function () {
+            hideStopBanner();
+            updateStopBottom();
+        }
+
+        doEvents = function () {
+            step++;
+
+            if (step % 3 == 0) {
+                updateAdvert();
+                updateTime();
+            }
+
+            switch (step) {
+                    case 01: departureStop(); break;
+                case 06: arriveStop(); break;
+                    case 07: departureStop(); break;
+                case 11: updateWeather(22, 4);
+                case 12: arriveStop(); break;
+                    case 13: departureStop(); break;
+                case 14: showAlertBanner(); break;
+                case 15: hideAlertBanner(); break;
+                case 18: arriveStop(); break;
+                    case 19: departureStop(); break;
+                case 20: updateWeather(27, 5);
+                case 24: arriveStop(); break;
+                    case 25: departureStop(); break;
+                case 30: arriveStop(); break;
+                    case 31: departureStop();
+            }
+        }
+
+        $(document).ready(function() {
+            updateTime();
+            arriveStop();
+            setInterval(doEvents, 4000);
+        });
+    </script>
+</body>
+</html>
