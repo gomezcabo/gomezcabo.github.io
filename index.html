@@ -1,372 +1,180 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
-
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Saira+Semi+Condensed" rel="stylesheet">
-    <title>Demo</title>
-
-    <style>
-        body {
-            font-family: 'Saira Semi Condensed', sans-serif;
-            font-size: 36px;
-            background-color: #222;
-        }
-
-        .header-block {
-            display: flex;
-            height: 100%;
-            align-items: center;
-            width: 100%;
-            justify-content: center;
-        }
-
-        .flex-start {
-            justify-content: flex-start;
-        }
-
-        .flex-end {
-            justify-content: flex-end;
-        }
-
-        @keyframes opacity {
-        50% { opacity: 0; }
-        }
-
-        .blink {
-            animation-name: opacity;
-            animation-duration: 1s;
-            transition-timing-function: ease;
-            animation-iteration-count: infinite;
-        }
-
-        #alert {
-            display: none;
-            border-radius: 20px;
-            position: absolute;
-            flex-direction: column;
-            font-size: 1.2em;
-            justify-content: center;
-            padding: 20px 30px;
-            top: 150px;
-            left: 15%;
-            width: 70%;
-            background-color: #fee;
-            z-index: 2000;
-            color: #422;
-        }
-
-        #alert-title {
-            font-weight: bold;
-            color: #722;
-        }
-
-        #stop {
-            display: none;
-            border-radius: 20px;
-            position: absolute;
-            flex-direction: column;
-            font-size: 1.2em;
-            justify-content: center;
-            padding: 20px 30px;
-            top: 250px;
-            left: 30%;
-            width: 40%;
-            background-color: #eee;
-            z-index: 2000;
-            color: #222;
-            -webkit-box-shadow: 10px 10px 40px -8px rgba(0,0,0,0.75);
-            -moz-box-shadow: 10px 10px 40px -8px rgba(0,0,0,0.75);
-            box-shadow: 10px 10px 40px -8px rgba(0,0,0,0.75);
-        }
-
-        #stop-title {
-            font-weight: bold;
-        }
-
-        #content {
-            background-color: #000;
-            position: fixed;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-        }
-
-        .darken {
-            filter: brightness(15%);
-        }
-
-        #header {
-            display: flex;
-            justify-content: space-between;
-            background-color: #222;
-            color: #fff;
-            position: absolute;
-            top: 0;
-            height: 80px;
-            width: 100%;
-            z-index: 100;
-            border-bottom-left-radius: 80px;
-            border-bottom-right-radius: 80px;
-        }
-
-        #logo {
-            margin-left: 60px;
-        }
-
-        #logo img {
-            width: 60px;
-            height: 60px;
-        }
-
-        #weather-icon {
-            line-height: 0px;
-        }
-
-        #weather-icon img {
-            padding-top: 5px;
-            width: 50px;
-            height: 50px;
-        }
-
-        #weather-temp {
-            font-size: 36px;
-        }
-
-        #weather-city {
-            margin-left: 30px;
-        }
-
-        #time {
-            margin-right: 60px;
-        }
-
-        #time-date {
-            margin-right: 20px;
-        }
-
-        #advert {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            z-index: 50;
-        }
-
-        #advert img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        #footer {
-            display: flex;
-            justify-content: space-between;
-            color: #fff;
-            position: absolute;
-            bottom: 0;
-            height: 100px;
-            width: 100%;
-            z-index: 100;
-        }
-
-        #footer .stop {
-            display: flex;
-            flex-direction: column;
-            padding: 0 20px;
-            width: 20%;
-            background-color: #222;
-            justify-content: center;
-        }
-
-        #footer .stop.left {
-            border-top-right-radius: 80px;
-            align-items: flex-start;
-        }
-
-        #footer .stop.right {
-            border-top-left-radius: 80px;
-            align-items: flex-end;
-        }
-
-        #footer .stop-type {
-            padding-top: 10px;
-            font-size: .6em;
-            text-transform: uppercase;
-        }
-    </style>
-
-</head>
+<title>Frontend CSS Test</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body {font-family: "Lato", sans-serif}
+.mySlides {display: none}
+</style>
 <body>
-    <div id="stop">
-        <div id="stop-title">Parada actual</div>
-        <div id="stop-name">Plaza de España</div>
+
+<!-- Navbar -->
+<div class="w3-top">
+  <div class="w3-bar w3-black w3-card-2">
+    <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+    <a href="#" class="w3-bar-item w3-button w3-padding-large">HOME</a>
+    <a href="#band" class="w3-bar-item w3-button w3-padding-large w3-hide-small">FIRST</a>
+    <a href="#tour" class="w3-bar-item w3-button w3-padding-large w3-hide-small">SECOND</a>
+    <a href="#contact" class="w3-bar-item w3-button w3-padding-large w3-hide-small">CONTACT</a>
+    <div class="w3-dropdown-hover w3-hide-small">
+      <button class="w3-padding-large w3-button" title="More">MORE <i class="fa fa-caret-down"></i></button>     
+      <div class="w3-dropdown-content w3-bar-block w3-card-4">
+        <a href="#" class="w3-bar-item w3-button">OPTION A</a>
+        <a href="#" class="w3-bar-item w3-button">OPTION B</a>
+        <a href="#" class="w3-bar-item w3-button">OPTION C</a>
+      </div>
     </div>
-    <div id="alert">
-        <div id="alert-title">Alerta meteorológica</div>
-        <div id="alert-text">
-            El Cabildo de Tenerife activa su Plan de Emergencias - Las zonas de acampada,
-            recreo y albergues estarán cerradas - Se ha aplazado el concurso de comparsas
-            infantiles que iba a celebrarse el sábado en el Recinto Ferial
+    <a href="javascript:void(0)" class="w3-padding-large w3-hover-red w3-hide-small w3-right"><i class="fa fa-search"></i></a>
+  </div>
+</div>
+
+<!-- Navbar on small screens -->
+<div id="navDemo" class="w3-bar-block w3-black w3-hide w3-hide-large w3-hide-medium w3-top" style="margin-top:46px">
+  <a href="#band" class="w3-bar-item w3-button w3-padding-large">BAND</a>
+  <a href="#tour" class="w3-bar-item w3-button w3-padding-large">TOUR</a>
+  <a href="#contact" class="w3-bar-item w3-button w3-padding-large">CONTACT</a>
+  <a href="#" class="w3-bar-item w3-button w3-padding-large">MERCH</a>
+</div>
+
+<!-- Page content -->
+<div class="w3-content" style="max-width:2000px;margin-top:46px">
+
+  <!-- The Band Section -->
+  <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="band">
+    <h2 class="w3-wide">FIRST SECTION</h2>
+    <p class="w3-opacity"><i>Vestibulum lectus mauris ultrice</i></p>
+    <p class="w3-justify">Enim nec dui nunc mattis enim ut tellus elementum sagittis. Nunc id cursus metus aliquam eleifend mi in nulla posuere. Morbi tristique senectus et netus. Volutpat diam ut venenatis tellus in metus vulputate eu scelerisque. Egestas fringilla phasellus faucibus scelerisque eleifend donec pretium. Arcu odio ut sem nulla pharetra diam sit. Nam libero justo laoreet sit amet cursus sit. Sollicitudin aliquam ultrices sagittis orci a. Vitae congue eu consequat ac felis donec et. Aenean pharetra magna ac placerat vestibulum lectus mauris ultrices. Risus nullam eget felis eget nunc lobortis mattis aliquam faucibus. A lacus vestibulum sed arcu non odio. In nisl nisi scelerisque eu ultrices vitae auctor. At augue eget arcu dictum varius. Faucibus turpis in eu mi bibendum neque egestas congue quisque. Sollicitudin aliquam ultrices sagittis orci a scelerisque purus.</p>
+    <div class="w3-row w3-padding-32">
+      <div class="w3-third w3-padding">
+        <div class="w3-container w3-orange">
+          <p><strong>Block</strong><br/>Integer feugiat scelerisque varius morbi enim nunc faucibus a pellentesque. Ut sem nulla pharetra diam sit amet nisl suscipit adipiscing.</p>
         </div>
+      </div>
+      <div class="w3-third w3-padding">
+        <div class="w3-container w3-orange">
+          <p><strong>Block</strong><br/>Integer feugiat scelerisque varius morbi enim nunc faucibus a pellentesque. Ut sem nulla pharetra diam sit amet nisl suscipit adipiscing.</p>
+        </div>
+      </div>
+      <div class="w3-third w3-padding">
+        <div class="w3-container w3-orange">
+          <p><strong>Block</strong><br/>Integer feugiat scelerisque varius morbi enim nunc faucibus a pellentesque. Ut sem nulla pharetra diam sit amet nisl suscipit adipiscing.</p>
+        </div>
+      </div>
     </div>
-    <div id="content">
-        <div id="header">
-            <div class="header-block flex-start" id="logo">
-                <img src="images/logo.png"/>
-            </div>
-            <div class="header-block" id="weather">
-                <div id="weather-temp">19º</div>
-                <div id="weather-icon">
-                    <img src="images/weather/2.png"/>
-                </div>
-                <div id="weather-city">Santa Cruz de Tenerife</div>
+  </div>
 
-            </div>
-            <div class="header-block flex-end" id="time">
-                <div id="time-date">15 AGO</div>
-                <div id="time-time">
-                    <span id="time-hour">15</span>
-                    <span class="blink">:</span>
-                    <span id="time-minute">00</span>
-                </div>
-            </div>
+  <!-- The Tour Section -->
+  <div class="w3-black" id="tour">
+    <div class="w3-container w3-content w3-padding-64" style="max-width:800px">
+      <h2 class="w3-wide w3-center">SECOND SECTION</h2>
+      <p class="w3-opacity w3-center"><i>Ut enim ad minim veniam, quis nostrud exercitation.</i></p><br>
+
+      <ul class="w3-ul w3-border w3-white w3-text-grey">
+        <li class="w3-padding">Item A <span class="w3-tag w3-red w3-margin-left">label</span></li>
+        <li class="w3-padding">Item B <span class="w3-tag w3-orange w3-margin-left">label</span></li>
+        <li class="w3-padding">Item C <span class="w3-badge w3-right w3-margin-right">7</span></li>
+      </ul>
+
+      <div class="w3-row-padding w3-padding-32" style="margin:0 -16px">
+        <div class="w3-third w3-margin-bottom">
+          <div class="w3-container w3-white">
+            <p><b>Card A</b></p>
+            <p class="w3-opacity">Sun 01 Jan 2017</p>
+            <p>Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero.</p>
+            <button class="w3-button w3-black w3-margin-bottom" onclick="document.getElementById('ticketModal').style.display='block'">Action</button>
+          </div>
         </div>
-        <div id="advert">
-            <img src="images/ads/0.jpg"/>
+        <div class="w3-third w3-margin-bottom">
+          <div class="w3-container w3-white">
+            <p><b>Card B</b></p>
+            <p class="w3-opacity">Sun 01 Jan 2017</p>
+            <p>Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero.</p>
+            <button class="w3-button w3-black w3-margin-bottom" onclick="document.getElementById('ticketModal').style.display='block'">Action</button>
+          </div>
         </div>
-        <div id="footer">
-            <div class="stop left">
-                <div class="stop-type">Anterior parada</div>
-                <div id="stop-left-name">Tacoronte</div>
-            </div>
-            <div class="stop right">
-                <div class="stop-type">Próxima parada</div>
-                <div id="stop-right-name">Hospital Universitario</div>
-            </div>
+        <div class="w3-third w3-margin-bottom">
+          <div class="w3-container w3-white">
+            <p><b>Card C</b></p>
+            <p class="w3-opacity">Sun 01 Jan 2017</p>
+            <p>Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero.</p>
+            <button class="w3-button w3-black w3-margin-bottom" onclick="document.getElementById('ticketModal').style.display='block'">Action</button>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/locale/es.js"></script>
-    <script>
-        var stopIndex = 0;
-        var advertIndex = 0;
+  <!-- Ticket Modal -->
+  <div id="ticketModal" class="w3-modal">
+    <div class="w3-modal-content w3-animate-top w3-card-4">
+      <header class="w3-container w3-teal w3-center w3-padding-32"> 
+        <span onclick="document.getElementById('ticketModal').style.display='none'" 
+       class="w3-button w3-teal w3-xlarge w3-display-topright">×</span>
+        <h2 class="w3-wide"><i class="fa fa-suitcase w3-margin-right"></i>Tickets</h2>
+      </header>
+      <div class="w3-container">
+        <p><label><i class="fa fa-shopping-cart"></i> Tickets, $15 per person</label></p>
+        <input class="w3-input w3-border" type="text" placeholder="How many?">
+        <p><label><i class="fa fa-user"></i> Send To</label></p>
+        <input class="w3-input w3-border" type="text" placeholder="Enter email">
+        <button class="w3-button w3-block w3-teal w3-padding-16 w3-section w3-right">PAY <i class="fa fa-check"></i></button>
+        <button class="w3-button w3-red w3-section" onclick="document.getElementById('ticketModal').style.display='none'">Close <i class="fa fa-remove"></i></button>
+        <p class="w3-right">Need <a href="#" class="w3-text-blue">help?</a></p>
+      </div>
+    </div>
+  </div>
 
-        var timeInterval;
-        var stopInterval;
-        var advertInterval;
+  <!-- The Contact Section -->
+  <div class="w3-container w3-content w3-padding-64" style="max-width:800px" id="contact">
+    <h2 class="w3-wide w3-center">CONTACT</h2>
+    <p class="w3-opacity w3-center"><i>Leave a message</i></p>
+    <div class="w3-row w3-padding-32">
+      <div class="w3-col m6 w3-large w3-margin-bottom">
+        <i class="fa fa-map-marker" style="width:30px"></i> Nowhere, US<br>
+        <i class="fa fa-phone" style="width:30px"></i> Phone: +00 000000000<br>
+        <i class="fa fa-envelope" style="width:30px"> </i> Email: mail@mail.com<br>
+      </div>
+      <div class="w3-col m6">
+        <form action="/action_page.php" target="_blank">
+          <div class="w3-row-padding" style="margin:0 -16px 8px -16px">
+            <div class="w3-half">
+              <input class="w3-input w3-border" type="text" placeholder="Name" required name="Name">
+            </div>
+            <div class="w3-half">
+              <input class="w3-input w3-border" type="text" placeholder="Email" required name="Email">
+            </div>
+          </div>
+          <input class="w3-input w3-border" type="text" placeholder="Message" required name="Message">
+          <button class="w3-button w3-black w3-section w3-right" type="submit">SEND</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+<!-- End Page Content -->
+</div>
 
-        var step = 0;
+<!-- Footer -->
+<footer class="w3-container w3-padding-64 w3-center w3-opacity w3-light-grey w3-xlarge">
 
-        var stops = [
-            'Hospital Universitario',
-            'Conservatorio',
-            'Plaza de España',
-            'Barrio de Salamanca',
-            'Paseo Ramón Gómez',
-            'Intercambiador'
-        ];
+  <p class="w3-medium">Copyright</p>
+</footer>
 
-        updateTime = function() {
-            var d = new Date();
-            $('#time-hour').text(('0' + d.getHours()).substr(-2));
-            $('#time-minute').text(('0' + d.getMinutes()).substr(-2));
-            $('#time-date').html(moment().add(+1, 'days').format('D <b>MMM<b>').toUpperCase().replace('.', ''));
-        }
+<script>
+// Used to toggle the menu on small screens when clicking on the menu button
+function myFunction() {
+    var x = document.getElementById("navDemo");
+    if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+    } else { 
+        x.className = x.className.replace(" w3-show", "");
+    }
+}
+</script>
 
-        hideStopBottom = function() {
-            $('#footer').addClass('animated slideOutDown');
-        }
-
-        updateStopBottom = function() {
-            $('#stop-left-name').text(stops[stopIndex++]);
-            $('#stop-right-name').text(stops[stopIndex]);
-            $('#footer').removeClass('slideOutDown');
-            $('#footer').addClass('animated slideInUp');
-        }
-
-        showStopBanner = function() {
-            $('#stop-name').text(stops[stopIndex]);
-            $('#content').addClass('darken');
-            $('#stop').fadeIn();
-        }
-
-        hideStopBanner = function() {
-            $('#content').removeClass('darken');
-            $('#stop').fadeOut();
-        }
-
-        showAlertBanner = function() {
-            $('#content').addClass('darken');
-            $('#alert').fadeIn();
-        }
-
-        hideAlertBanner = function() {
-            $('#content').removeClass('darken');
-            $('#alert').fadeOut();
-        }
-
-        updateAdvert = function () {
-            advertIndex = (advertIndex + 1) % 10;
-            $('#advert img').fadeOut(300, function(){
-                $(this).attr('src', 'images/ads/' + advertIndex + '.jpg').bind('onreadystatechange load', function(){
-                    if (this.complete) $(this).fadeIn(300);
-                });
-            });
-        }
-
-        updateWeather = function(temp, imageIndex) {
-            $('#weather-temp').text(temp + 'º');
-            $('#weather-icon img').attr('src', 'images/weather/' + imageIndex + '.png');
-        }
-
-        arriveStop = function () {
-            showStopBanner();
-            hideStopBottom();
-        }
-
-        departureStop = function () {
-            hideStopBanner();
-            updateStopBottom();
-        }
-
-        doEvents = function () {
-            step++;
-
-            if (step % 3 == 0) {
-                updateAdvert();
-                updateTime();
-            }
-
-            switch (step) {
-                    case 01: departureStop(); break;
-                case 06: arriveStop(); break;
-                    case 07: departureStop(); break;
-                case 11: updateWeather(22, 4);
-                case 12: arriveStop(); break;
-                    case 13: departureStop(); break;
-                case 14: showAlertBanner(); break;
-                case 15: hideAlertBanner(); break;
-                case 18: arriveStop(); break;
-                    case 19: departureStop(); break;
-                case 20: updateWeather(27, 5);
-                case 24: arriveStop(); break;
-                    case 25: departureStop(); break;
-                case 30: arriveStop(); break;
-                    case 31: departureStop();
-            }
-        }
-
-        $(document).ready(function() {
-            updateTime();
-            arriveStop();
-            setInterval(doEvents, 4000);
-        });
-    </script>
 </body>
 </html>

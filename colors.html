@@ -1,0 +1,200 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Frontend Javascript Test</title>
+    <style>
+        body {
+            background-color: #333;
+        }
+
+        body * {
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+
+        #color-picker {
+            display: flex;
+            margin: 0 auto;
+            margin-bottom: 10px;
+            margin-top: 20px;
+            justify-content: center;
+        }
+
+
+        #color-picker .color-option,
+        #color-picker .action
+        {
+            display: flex;
+            margin: 4px;
+            width: 36px;
+            height: 36px;
+            cursor: pointer;
+            border-radius: 2px;
+            color: white;
+            background-color: gray;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #color-picker .action:first-of-type {
+            color: blue;
+        }
+
+        #color-blocks {
+            display: flex;
+            flex-wrap: wrap;
+            width: 800px;
+            margin: 0 auto;
+        }
+
+        #color-blocks .block {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 10px;
+            width: 128px;
+            height: 128px;
+            background-color: gray;
+            font-size: 3em;
+            color: white;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        #color-blocks .block.selected {
+            border: 10px dashed white;
+            background-color: #222;
+        }
+
+        .blue   { background-color: #0074D9 !important; }
+        .green  { background-color: #2ECC40 !important; }
+        .orange { background-color: #FF851B !important; }
+        .red    { background-color: #FF4136 !important; }
+        .purple { background-color: #B10DC9 !important; }
+
+        .ml30 {
+            margin-left: 30px !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="color-picker">
+        <div class="color-option blue"></div>
+        <div class="color-option green"></div>
+        <div class="color-option orange"></div>
+        <div class="color-option red"></div>
+        <div class="color-option purple"></div>
+
+        <div id="random-sort" class="action ml30" title="Shuffle elements">R</div>
+        <div id="alpha-sort" class="action" title="Sort elements">S</div>
+        <div id="clear-selected" class="action" title="Clear colors">C</div>
+    </div>
+
+    <div id="block-actions">
+    </div>
+
+    <div id="color-blocks">
+        <div class="block block-a">A</div>
+        <div class="block block-a">A</div>
+        <div class="block block-d">D</div>
+        <div class="block block-c">C</div>
+        <div class="block block-d">D</div>
+        <div class="block block-c">C</div>
+        <div class="block block-a">A</div>
+        <div class="block block-b">B</div>
+        <div class="block block-b">B</div>
+        <div class="block block-b">B</div>
+        <div class="block block-c">C</div>
+        <div class="block block-a">A</div>
+        <div class="block block-c">C</div>
+        <div class="block block-b">B</div>
+        <div class="block block-b">B</div>
+        <div class="block block-a">A</div>
+        <div class="block block-c">C</div>
+        <div class="block block-c">C</div>
+        <div class="block block-b">B</div>
+        <div class="block block-c">C</div>
+        <div class="block block-b">B</div>
+        <div class="block block-b">B</div>
+        <div class="block block-a">A</div>
+        <div class="block block-c">C</div>
+        <div class="block block-c">C</div>
+    </div>
+
+    <!-- Insert your code here -->
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+
+            $('.block').click(function() {
+                if ($(this).hasClass('selected')) {
+                    $('.block').removeClass('selected');
+                    return true;
+                }
+
+                $('.block').removeClass('selected');
+
+                var blockClasses = ['block-a', 'block-b', 'block-c', 'block-d'];
+                for (var blockClass of blockClasses) {
+                    if ($(this).hasClass(blockClass)) {
+                        $('.' + blockClass).addClass('selected');
+                        return true;
+                    }
+                }
+            });
+
+            $('.color-option').click(function() {
+                var colorClasses = ['blue', 'green', 'orange', 'red', 'purple'];
+
+                for (var colorClass of colorClasses) {
+                    if ($(this).hasClass(colorClass)) {
+                        $('.selected').addClass(colorClass);
+                    } else {
+                        $('.selected').removeClass(colorClass);
+                    }
+                }
+                $('.block').removeClass('selected');
+            });
+
+            $('#random-sort').click(function() {
+                var parent = $("#color-blocks");
+                var divs = parent.find('div.block');
+
+                for (var i = 0; i < divs.length; i++)
+                {
+                    var random_pos = Math.floor(Math.random() * divs.length);
+                    var to = parent.find('div.block')[i];
+                    var from = parent.find('div.block')[random_pos];
+                    var copy_to = $(to).clone(true);
+                    var copy_from = $(from).clone(true);
+
+                    $(to).replaceWith(copy_from);
+                    $(from).replaceWith(copy_to);
+                }
+            });
+
+            $('#alpha-sort').click(function() {
+                $('#color-blocks div.block').sort(function(a,b){
+                    return a.className <= b.className ? -1 : 1;
+                }).appendTo('#color-blocks')
+            });
+
+            $('#clear-selected').click(function() {
+                var colorClasses = ['blue', 'green', 'orange', 'red', 'purple'];
+                for (var colorClass of colorClasses) {
+                    $('#color-blocks .block').removeClass(colorClass);
+                }
+                $('.selected').removeClass('selected');
+            });
+
+        });
+    </script>
+
+</body>
+
+</html>
